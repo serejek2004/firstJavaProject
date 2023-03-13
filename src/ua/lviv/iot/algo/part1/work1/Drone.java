@@ -14,24 +14,16 @@ public class Drone {
         return instance;
     }
     private double currentSpeed, currentAltitude, batteryCapacity, currentBatteryLevel;
-    public double[] flyAt(double speedMetersPerMinute, double altitude) {
-        double[] array = new double[2];
+    public void flyAt(double speedMetersPerMinute, double altitude) {
         currentSpeed = speedMetersPerMinute;
         currentAltitude = altitude;
-        array[0] = currentSpeed;
-        array[1] = currentAltitude;
-        System.out.println("Now your speed MPM is " + speedMetersPerMinute);
-        System.out.println("Now your alltitude in meters is " + altitude);
-        return array;
     }
      public double chargeBattery(double amount) {
-            currentBatteryLevel += amount;
-            System.out.println("Your battary level is " + currentBatteryLevel );
+        currentBatteryLevel += amount;
         return currentBatteryLevel;
     }
     public double useBattery(double amount) {
         currentBatteryLevel -= amount;
-        System.out.println("Your battary level is " + currentBatteryLevel);
         return currentBatteryLevel;
     }
     public static void main(String... args) {
@@ -41,8 +33,8 @@ public class Drone {
         arrayDrones[2] = getInstance();
         arrayDrones[3] = getInstance();
 
-        for (int i = 0; i < arrayDrones.length; i++) {
-            System.out.println(arrayDrones[i].toString());
+        for (Drone drones : arrayDrones) {
+            System.out.println(drones.toString());
         }
     }
 }
