@@ -9,16 +9,19 @@ import lombok.*;
 @ToString(of = {"currentSpeed", "currentAltitude", "batteryCapacity", "currentBatteryLevel"})
 
 public class Drone {
+    private double currentSpeed;
+    private double currentAltitude;
+    private double batteryCapacity;
+    private double currentBatteryLevel;
     private static Drone instance = new Drone();
     public static Drone getInstance() {
         return instance;
     }
-    private double currentSpeed, currentAltitude, batteryCapacity, currentBatteryLevel;
     public void flyAt(double speedMetersPerMinute, double altitude) {
         currentSpeed = speedMetersPerMinute;
         currentAltitude = altitude;
     }
-     public double chargeBattery(double amount) {
+    public double chargeBattery(double amount) {
         currentBatteryLevel += amount;
         return currentBatteryLevel;
     }
