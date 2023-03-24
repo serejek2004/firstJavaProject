@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class Helicopter extends AerialVehicle {
-    private double fuelCapicityInLiters;
+    private double fuelCapacityInLiters;
     private double currentFuelLevel;
 
     public double refuel(double amount) {
-        if (currentFuelLevel != 100) {
+        if (currentFuelLevel != fuelCapacityInLiters) {
             currentFuelLevel += amount;
         }
-        if (currentFuelLevel > 100) {
+        if (currentFuelLevel > fuelCapacityInLiters) {
             System.out.println("Error");
             return refuel(amount);
         }
@@ -45,6 +45,6 @@ public class Helicopter extends AerialVehicle {
 
     @Override
     public String toString() {
-        return "Helicopter - " + super.toString() + " currentFuelLevel=" + currentFuelLevel + ", fuelCapicityInLiters=" + fuelCapicityInLiters;
+        return "Helicopter - " + super.toString() + " currentFuelLevel=" + currentFuelLevel + ", fuelCapicatyInLiters=" + fuelCapacityInLiters;
     }
 }
