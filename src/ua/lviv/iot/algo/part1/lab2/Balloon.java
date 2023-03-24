@@ -40,6 +40,6 @@ public class Balloon extends AerialVehicle {
 
     @Override
     public String toString() {
-        return super.toString() + " temperatureBallon=" + temperatureBalloon + ", maxTemperatureBalloon=" + maxTemperatureBalloon;
+        return "Balloon - " + super.toString() + " temperatureBallon=" + temperatureBalloon + ", maxTemperatureBalloon=" + maxTemperatureBalloon;
     }
 }

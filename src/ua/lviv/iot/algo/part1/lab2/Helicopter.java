@@ -46,6 +46,6 @@ public class Helicopter extends AerialVehicle {
 
     @Override
     public String toString() {
-        return super.toString() + " currentFuelLevel=" + currentFuelLevel + ", fuelCapicityInLiters=" + fuelCapicityInLiters;
+        return "Helicopter - " + super.toString() + " currentFuelLevel=" + currentFuelLevel + ", fuelCapicityInLiters=" + fuelCapicityInLiters;
     }
 }

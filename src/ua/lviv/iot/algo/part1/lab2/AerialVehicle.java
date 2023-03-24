@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(of = {"currentSpeed", "currentAltitude"})
+// @ToString (of = {"currentSpeed", "currentAltitude"})
 
 public abstract class AerialVehicle {
     private double currentSpeed;
@@ -14,4 +14,7 @@ public abstract class AerialVehicle {
 
     public abstract void flyAt(double speedMetersPerMinute, double altitude);
 
+    public String toString() {
+        return " currentSpeed=" + currentSpeed + ", currentAltitude=" + currentAltitude;
+    }
 }

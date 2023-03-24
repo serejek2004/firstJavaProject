@@ -45,6 +45,6 @@ public class Drone extends AerialVehicle {
     }
 
     public String toString() {
-        return super.toString() + " currentBattaryLevel=" + currentBattaryLevelInPercent + "%, battaryCapacityInMA=" + battaryCapacityInMA;
+        return "Drone - " + super.toString() + " currentBattaryLevel=" + currentBattaryLevelInPercent + "%, battaryCapacityInMA=" + battaryCapacityInMA;
     }
 }

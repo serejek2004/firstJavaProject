@@ -6,21 +6,23 @@ import java.util.stream.Collectors;
 
 public class AerialVehicleManager {
     private static final List<AerialVehicle> aerialVehicles = new LinkedList<AerialVehicle>();
+
     public void addAerialVehicle(final AerialVehicle aerialVehicle) {
         aerialVehicles.add(aerialVehicle);
     }
-    public List<AerialVehicle> findAllWithSpeedGreaterThan(double currentSpeed)
-    {
+
+    public List<AerialVehicle> findAllWithSpeedGreaterThan(double currentSpeed) {
         return aerialVehicles.stream()
                 .filter((vehicle) -> vehicle.getCurrentSpeed() > currentSpeed)
                 .collect(Collectors.toList());
     }
-    public List<AerialVehicle> findAllWithAltitudeGreaterThan(double currentAltitude)
-    {
+
+    public List<AerialVehicle> findAllWithAltitudeGreaterThan(double currentAltitude) {
         return aerialVehicles.stream()
                 .filter((vehicle) -> vehicle.getCurrentAltitude() > currentAltitude)
                 .collect(Collectors.toList());
     }
+
     public static void main(String... args) {
         Drone battleDrone = new Drone(20.0, 6000.0);
         Drone exploratoryDrone = new Drone(10.0, 6500.0);

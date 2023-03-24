@@ -39,7 +39,7 @@ public class Plane extends AerialVehicle {
 
     @Override
     public String toString() {
-        return super.toString() + " numberOfPassangers=" + numberOfPassengers + ", maxNumberOfPassengers=" + maxNumberOfPassengers;
+        return "Plane - " + super.toString() + " numberOfPassangers=" + numberOfPassengers + ", maxNumberOfPassengers=" + maxNumberOfPassengers;
     }
 }
 
