@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 
-
 public class Plane extends AerialVehicle {
     private int numberOfPassengers;
     private int maxNumberOfPassengers;

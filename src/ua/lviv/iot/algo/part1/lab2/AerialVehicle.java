@@ -1,12 +1,14 @@
 package ua.lviv.iot.algo.part1.lab2;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-// @ToString (of = {"currentSpeed", "currentAltitude"})
 
 public abstract class AerialVehicle {
     private double currentSpeed;
@@ -14,7 +16,7 @@ public abstract class AerialVehicle {
 
     public abstract void flyAt(double speedMetersPerMinute, double altitude);
 
-     public String toString() {
-       return "currentSpeed=" + currentSpeed + ", currentAltitude=" + currentAltitude;
+    public String toString() {
+        return "currentSpeed=" + currentSpeed + ", currentAltitude=" + currentAltitude;
     }
 }
