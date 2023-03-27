@@ -13,55 +13,55 @@ public class DroneManager {
 
     public List<AbstractDrone> findAllWithSpeedGreaterThan(double currentSpeed) {
         return DroneList.stream()
-                .filter(vehicle -> vehicle.getCurrentSpeed() > currentSpeed)
+                .filter(drone -> drone.getCurrentSpeed() > currentSpeed)
                 .collect(Collectors.toList());
     }
 
     public List<AbstractDrone> findAllWithAltitudeGreaterThan(double currentAltitude) {
         return DroneList.stream()
-                .filter(vehicle -> vehicle.getCurrentAltitude() > currentAltitude)
+                .filter(drone -> drone.getCurrentAltitude() > currentAltitude)
                 .collect(Collectors.toList());
     }
 
     public static void main(String... args) {
-        ElectroDrone battleELectroDrone = new ElectroDrone(2000, 6000, 500);
-        ElectroDrone exploratoryElectroDrone = new ElectroDrone(3000, 6500, 1000);
-        PetrolDrone battlePetrolDrone = new PetrolDrone(700, 600, 50, "React");
-        PetrolDrone exploratoryPetrolDrone = new PetrolDrone(900, 550, 80, "React");
-        UnderwaterDrone battleUnderwaterDrone = new UnderwaterDrone(60.0, 50, 10);
-        UnderwaterDrone exploratoryUnderwaterDrone = new UnderwaterDrone(100, 90, 15);
-        DeliveryDrone foodDeliveryDrone = new DeliveryDrone(2500, 5000, 250);
-        DeliveryDrone materialDeliveryDrone = new DeliveryDrone(5000, 8000, 1250);
+        ElectroDrone BattleELectroDrone = new ElectroDrone(2000, 6000, 500);
+        ElectroDrone ExploratoryElectroDrone = new ElectroDrone(3000, 6500, 1000);
+        PetrolDrone BattlePetrolDrone = new PetrolDrone(700, 600, 50, "React");
+        PetrolDrone ExploratoryPetrolDrone = new PetrolDrone(900, 550, 80, "React");
+        UnderwaterDrone BattleUnderwaterDrone = new UnderwaterDrone(60.0, 50, 10);
+        UnderwaterDrone ExploratoryUnderwaterDrone = new UnderwaterDrone(100, 90, 15);
+        DeliveryDrone FoodDeliveryDrone = new DeliveryDrone(2500, 5000, 250);
+        DeliveryDrone MaterialDeliveryDrone = new DeliveryDrone(5000, 8000, 1250);
 
-        battlePetrolDrone.flyAt(30, 700);
-        battlePetrolDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        exploratoryPetrolDrone.flyAt(90, 1000);
-        exploratoryPetrolDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        BattlePetrolDrone.flyAt(30, 700);
+        BattlePetrolDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        ExploratoryPetrolDrone.flyAt(90, 1000);
+        ExploratoryPetrolDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
-        battleELectroDrone.flyAt(50, 600);
-        battleELectroDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        exploratoryElectroDrone.flyAt(55, 500);
-        exploratoryElectroDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        BattleELectroDrone.flyAt(50, 600);
+        BattleELectroDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        ExploratoryElectroDrone.flyAt(55, 500);
+        ExploratoryElectroDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
-        battleUnderwaterDrone.flyAt(30, -300);
-        battleUnderwaterDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        exploratoryUnderwaterDrone.flyAt(15, -800);
-        exploratoryUnderwaterDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        BattleUnderwaterDrone.flyAt(30, -300);
+        BattleUnderwaterDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        ExploratoryUnderwaterDrone.flyAt(15, -800);
+        ExploratoryUnderwaterDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
-        foodDeliveryDrone.flyAt(20, 450);
-        foodDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        materialDeliveryDrone.flyAt(15, 500);
-        materialDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        FoodDeliveryDrone.flyAt(20, 450);
+        FoodDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        MaterialDeliveryDrone.flyAt(15, 500);
+        MaterialDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
-        DroneManager manager = new DroneManager();
-        manager.addDrone(battleELectroDrone);
-        manager.addDrone(exploratoryElectroDrone);
-        manager.addDrone(battlePetrolDrone);
-        manager.addDrone(exploratoryPetrolDrone);
-        manager.addDrone(battleUnderwaterDrone);
-        manager.addDrone(exploratoryUnderwaterDrone);
-        manager.addDrone(foodDeliveryDrone);
-        manager.addDrone(materialDeliveryDrone);
+        DroneManager Manager = new DroneManager();
+        Manager.addDrone(BattleELectroDrone);
+        Manager.addDrone(ExploratoryElectroDrone);
+        Manager.addDrone(BattlePetrolDrone);
+        Manager.addDrone(ExploratoryPetrolDrone);
+        Manager.addDrone(BattleUnderwaterDrone);
+        Manager.addDrone(ExploratoryUnderwaterDrone);
+        Manager.addDrone(FoodDeliveryDrone);
+        Manager.addDrone(MaterialDeliveryDrone);
 
         for (AbstractDrone Drones : DroneList) System.out.println(Drones.toString());
 
@@ -69,13 +69,13 @@ public class DroneManager {
         System.out.println("currentSpeed greater than 50 is next objects ->");
         System.out.println("--------------------------------------");
 
-        for (AbstractDrone Drones : manager.findAllWithSpeedGreaterThan(50)) {
+        for (AbstractDrone Drones : Manager.findAllWithSpeedGreaterThan(50)) {
             System.out.println(Drones);
         }
         System.out.println("--------------------------------------");
         System.out.println("currentAltitude greater than 500 is next objects ->");
         System.out.println("--------------------------------------");
-        for (AbstractDrone Drones : manager.findAllWithAltitudeGreaterThan(500)) {
+        for (AbstractDrone Drones : Manager.findAllWithAltitudeGreaterThan(500)) {
             System.out.println(Drones);
         }
     }
