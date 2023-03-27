@@ -53,15 +53,15 @@ public class DroneManager {
         materialDeliveryDrone.flyAt(15, 500);
         materialDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
-        DroneManager Manager = new DroneManager();
-        Manager.addDrone(battleELectroDrone);
-        Manager.addDrone(exploratoryElectroDrone);
-        Manager.addDrone(battlePetrolDrone);
-        Manager.addDrone(exploratoryPetrolDrone);
-        Manager.addDrone(battleUnderwaterDrone);
-        Manager.addDrone(exploratoryUnderwaterDrone);
-        Manager.addDrone(foodDeliveryDrone);
-        Manager.addDrone(materialDeliveryDrone);
+        DroneManager manager = new DroneManager();
+        manager.addDrone(battleELectroDrone);
+        manager.addDrone(exploratoryElectroDrone);
+        manager.addDrone(battlePetrolDrone);
+        manager.addDrone(exploratoryPetrolDrone);
+        manager.addDrone(battleUnderwaterDrone);
+        manager.addDrone(exploratoryUnderwaterDrone);
+        manager.addDrone(foodDeliveryDrone);
+        manager.addDrone(materialDeliveryDrone);
 
         for (AbstractDrone Drones : DroneList) System.out.println(Drones.toString());
 
@@ -69,13 +69,13 @@ public class DroneManager {
         System.out.println("currentSpeed greater than 50 is next objects ->");
         System.out.println("--------------------------------------");
 
-        for (AbstractDrone Drones : Manager.findAllWithSpeedGreaterThan(50)) {
+        for (AbstractDrone Drones : manager.findAllWithSpeedGreaterThan(50)) {
             System.out.println(Drones);
         }
         System.out.println("--------------------------------------");
         System.out.println("currentAltitude greater than 500 is next objects ->");
         System.out.println("--------------------------------------");
-        for (AbstractDrone Drones : Manager.findAllWithAltitudeGreaterThan(500)) {
+        for (AbstractDrone Drones : manager.findAllWithAltitudeGreaterThan(500)) {
             System.out.println(Drones);
         }
     }
