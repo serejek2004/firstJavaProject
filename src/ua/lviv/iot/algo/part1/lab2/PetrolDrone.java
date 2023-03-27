@@ -6,7 +6,8 @@ public class PetrolDrone extends AbstractDrone {
     private double consumptionFuelPerHundredKm;
     private String typeFuel;
     private double currentMaxFlyingDistance;
-    PetrolDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm, String typeFuel){
+
+    PetrolDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm, String typeFuel) {
         this.fuelCapacityInLiters = fuelCapacityInLiters;
         this.currentFuelLevel = currentFuelLevel;
         this.consumptionFuelPerHundredKm = consumptionFuelPerHundredKm;
@@ -50,7 +51,7 @@ public class PetrolDrone extends AbstractDrone {
     @Override
     public String toString() {
         return "PetrolDrone - " + super.toString() + " fuelCapacity=" + fuelCapacityInLiters
-                + "l, consumptionFuelPerHundredkm=" + consumptionFuelPerHundredKm + " typeFuel -- " + typeFuel
+                + "l, consumptionFuelPerHundredKm=" + consumptionFuelPerHundredKm + " typeFuel -- " + typeFuel
                 + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
     }
 }

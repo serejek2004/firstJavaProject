@@ -13,10 +13,10 @@ public class ElectroDrone extends AbstractDrone {
     }
 
     public double chargeBattary(double amount) {
-        if (currentBattaryLevelInMA != 100) {
+        if (currentBattaryLevelInMA < battaryCapacity) {
             currentBattaryLevelInMA += amount;
         }
-        if (currentBattaryLevelInMA > 100) {
+        if (currentBattaryLevelInMA > battaryCapacity) {
             System.out.println("Error");
             return chargeBattary(amount);
         }
