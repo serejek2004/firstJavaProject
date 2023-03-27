@@ -10,11 +10,13 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public abstract class AerialVehicle {
+public abstract class AbstractDrone {
     private double currentSpeed;
     private double currentAltitude;
 
     public abstract void flyAt(double speedMetersPerMinute, double altitude);
+
+    public abstract void getMaxFlyingDistanceAtCurrentSpeed();
 
     public String toString() {
         return "currentSpeed=" + currentSpeed + ", currentAltitude=" + currentAltitude;
