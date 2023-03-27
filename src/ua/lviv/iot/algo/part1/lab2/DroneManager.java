@@ -5,20 +5,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DroneManager {
-    private static final List<AbstractDrone> Drone = new LinkedList<AbstractDrone>();
+    private static final List<AbstractDrone> DroneList = new LinkedList<AbstractDrone>();
 
-    public void addDrone(final AbstractDrone aerialVehicle) {
-        Drone.add(aerialVehicle);
+    public void addDrone(final AbstractDrone typeDrone) {
+        DroneList.add(typeDrone);
     }
 
     public List<AbstractDrone> findAllWithSpeedGreaterThan(double currentSpeed) {
-        return Drone.stream()
+        return DroneList.stream()
                 .filter(vehicle -> vehicle.getCurrentSpeed() > currentSpeed)
                 .collect(Collectors.toList());
     }
 
     public List<AbstractDrone> findAllWithAltitudeGreaterThan(double currentAltitude) {
-        return Drone.stream()
+        return DroneList.stream()
                 .filter(vehicle -> vehicle.getCurrentAltitude() > currentAltitude)
                 .collect(Collectors.toList());
     }
@@ -63,7 +63,7 @@ public class DroneManager {
         manager.addDrone(foodDeliveryDrone);
         manager.addDrone(materialDeliveryDrone);
 
-        for (AbstractDrone Drones : Drone) System.out.println(Drones.toString());
+        for (AbstractDrone Drones : DroneList) System.out.println(Drones.toString());
 
         System.out.println("--------------------------------------");
         System.out.println("currentSpeed greater than 50 is next objects ->");
