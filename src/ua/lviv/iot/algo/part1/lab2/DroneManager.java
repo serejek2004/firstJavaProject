@@ -24,44 +24,44 @@ public class DroneManager {
     }
 
     public static void main(String... args) {
-        ElectroDrone BattleELectroDrone = new ElectroDrone(2000, 6000, 500);
-        ElectroDrone ExploratoryElectroDrone = new ElectroDrone(3000, 6500, 1000);
-        PetrolDrone BattlePetrolDrone = new PetrolDrone(700, 600, 50, "React");
-        PetrolDrone ExploratoryPetrolDrone = new PetrolDrone(900, 550, 80, "React");
-        UnderwaterDrone BattleUnderwaterDrone = new UnderwaterDrone(60.0, 50, 10);
-        UnderwaterDrone ExploratoryUnderwaterDrone = new UnderwaterDrone(100, 90, 15);
-        DeliveryDrone FoodDeliveryDrone = new DeliveryDrone(2500, 5000, 250);
-        DeliveryDrone MaterialDeliveryDrone = new DeliveryDrone(5000, 8000, 1250);
+        ElectroDrone battleELectroDrone = new ElectroDrone(2000, 6000, 500);
+        ElectroDrone exploratoryElectroDrone = new ElectroDrone(3000, 6500, 1000);
+        PetrolDrone battlePetrolDrone = new PetrolDrone(700, 600, 50, "React");
+        PetrolDrone exploratoryPetrolDrone = new PetrolDrone(900, 550, 80, "React");
+        UnderwaterDrone battleUnderwaterDrone = new UnderwaterDrone(60.0, 50, 10);
+        UnderwaterDrone exploratoryUnderwaterDrone = new UnderwaterDrone(100, 90, 15);
+        DeliveryDrone foodDeliveryDrone = new DeliveryDrone(2500, 5000, 250);
+        DeliveryDrone materialDeliveryDrone = new DeliveryDrone(5000, 8000, 1250);
 
-        BattlePetrolDrone.flyAt(30, 700);
-        BattlePetrolDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        ExploratoryPetrolDrone.flyAt(90, 1000);
-        ExploratoryPetrolDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        battlePetrolDrone.flyAt(30, 700);
+        battlePetrolDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        exploratoryPetrolDrone.flyAt(90, 1000);
+        exploratoryPetrolDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
-        BattleELectroDrone.flyAt(50, 600);
-        BattleELectroDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        ExploratoryElectroDrone.flyAt(55, 500);
-        ExploratoryElectroDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        battleELectroDrone.flyAt(50, 600);
+        battleELectroDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        exploratoryElectroDrone.flyAt(55, 500);
+        exploratoryElectroDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
-        BattleUnderwaterDrone.flyAt(30, -300);
-        BattleUnderwaterDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        ExploratoryUnderwaterDrone.flyAt(15, -800);
-        ExploratoryUnderwaterDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        battleUnderwaterDrone.flyAt(30, -300);
+        battleUnderwaterDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        exploratoryUnderwaterDrone.flyAt(15, -800);
+        exploratoryUnderwaterDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
-        FoodDeliveryDrone.flyAt(20, 450);
-        FoodDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        MaterialDeliveryDrone.flyAt(15, 500);
-        MaterialDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        foodDeliveryDrone.flyAt(20, 450);
+        foodDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
+        materialDeliveryDrone.flyAt(15, 500);
+        materialDeliveryDrone.getMaxFlyingDistanceAtCurrentSpeed();
 
         DroneManager Manager = new DroneManager();
-        Manager.addDrone(BattleELectroDrone);
-        Manager.addDrone(ExploratoryElectroDrone);
-        Manager.addDrone(BattlePetrolDrone);
-        Manager.addDrone(ExploratoryPetrolDrone);
-        Manager.addDrone(BattleUnderwaterDrone);
-        Manager.addDrone(ExploratoryUnderwaterDrone);
-        Manager.addDrone(FoodDeliveryDrone);
-        Manager.addDrone(MaterialDeliveryDrone);
+        Manager.addDrone(battleELectroDrone);
+        Manager.addDrone(exploratoryElectroDrone);
+        Manager.addDrone(battlePetrolDrone);
+        Manager.addDrone(exploratoryPetrolDrone);
+        Manager.addDrone(battleUnderwaterDrone);
+        Manager.addDrone(exploratoryUnderwaterDrone);
+        Manager.addDrone(foodDeliveryDrone);
+        Manager.addDrone(materialDeliveryDrone);
 
         for (AbstractDrone Drones : DroneList) System.out.println(Drones.toString());
 
