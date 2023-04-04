@@ -6,10 +6,13 @@ public class DeliveryDrone extends AbstractDrone {
     private double consumptionBattaryPerHundredKm;
     private double currentMaxFlyingDistance;
 
-    DeliveryDrone(double currentBattaryLevelInMA, double battaryCapacity, double consumptionBattaryPerHundredKm) {
+    DeliveryDrone(double currentBattaryLevelInMA, double battaryCapacity, double consumptionBattaryPerHundredKm
+            , double currentSpeed, double currentAltitude) {
+        super(currentSpeed, currentAltitude);
         this.currentBattaryLevelInMA = currentBattaryLevelInMA;
         this.battaryCapacity = battaryCapacity;
         this.consumptionBattaryPerHundredKm = consumptionBattaryPerHundredKm;
+
     }
 
     @Override
@@ -24,8 +27,10 @@ public class DeliveryDrone extends AbstractDrone {
     }
 
     public String toString() {
-        return "DeliveryDrone - " + super.toString() + " currentBattaryLevelInMA=" + currentBattaryLevelInMA + ", battaryCapacity="
-                + battaryCapacity + ", consumptionBattaryPerHundredKm=" + consumptionBattaryPerHundredKm
+        return "DeliveryDrone - " + super.toString()
+                + " currentBattaryLevelInMA=" + currentBattaryLevelInMA
+                + ", battaryCapacity=" + battaryCapacity
+                + ", consumptionBattaryPerHundredKm=" + consumptionBattaryPerHundredKm
                 + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
     }
 }

@@ -6,7 +6,9 @@ public class UnderwaterDrone extends AbstractDrone {
     private double consumptionFuelPerHundredKm;
     private double currentMaxFlyingDistance;
 
-    UnderwaterDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm) {
+    UnderwaterDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm
+            , double currentSpeed, double currentAltitude) {
+        super(currentSpeed, currentAltitude);
         this.fuelCapacityInLiters = fuelCapacityInLiters;
         this.currentFuelLevel = currentFuelLevel;
         this.consumptionFuelPerHundredKm = consumptionFuelPerHundredKm;

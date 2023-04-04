@@ -7,7 +7,9 @@ public class PetrolDrone extends AbstractDrone {
     private String typeFuel;
     private double currentMaxFlyingDistance;
 
-    PetrolDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm, String typeFuel) {
+    PetrolDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm, String typeFuel
+            , double currentSpeed, double currentAltitude) {
+        super(currentSpeed, currentAltitude);
         this.fuelCapacityInLiters = fuelCapacityInLiters;
         this.currentFuelLevel = currentFuelLevel;
         this.consumptionFuelPerHundredKm = consumptionFuelPerHundredKm;

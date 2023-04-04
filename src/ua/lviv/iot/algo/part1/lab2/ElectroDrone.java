@@ -6,7 +6,9 @@ public class ElectroDrone extends AbstractDrone {
     private double consumptionBattaryPerHundredKm;
     private double currentMaxFlyingDistance;
 
-    ElectroDrone(double currentBattaryLevelInMA, double battaryCapacity, double consumptionBattaryPerHundredKm) {
+    ElectroDrone(double currentBattaryLevelInMA, double battaryCapacity, double consumptionBattaryPerHundredKm
+            , double currentSpeed, double currentAltitude) {
+        super(currentSpeed, currentAltitude);
         this.currentBattaryLevelInMA = currentBattaryLevelInMA;
         this.battaryCapacity = battaryCapacity;
         this.consumptionBattaryPerHundredKm = consumptionBattaryPerHundredKm;
