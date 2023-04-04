@@ -1,14 +1,27 @@
-# firstJavaProject
+#LEVEL I
 
-its a class Drone that have this fields
+Create an abstract class AbstractDrone that will have the following fields:
+currentSpeed ​​- current speed of transport;
+currentAltitude - current altitude above sea level;
 
-currentSpeed -- the current speed of the drone;
-currentAltitude -- the current altitude of the drone;
-batteryCapacity -- drone battery capacity;
-currentBatteryLevel -- the current battery level of the drone.
+Implement two descendant classes: ElectroDrone and PetrolDrone.
+Add the abstract method getMaxFlyingDistanceAtCurrentSpeed(); to the parent class
 
-The Drone class have this public methods
+For all classes, you should implement the conversion of the object into a string representation (the use of the @ToString annotation from the lombok library is preferred)
 
-flyAt method that puts the drone in flight at the given speed and altitude
-chargeBattery method that adds the specified amount of charge to the drone's battery;
-useBattery method that uses the specified amount of charge from the drone's battery during flight.
+Also create an DroneManager class to demonstrate how the created classes work. In the main() method, create class objects by adding them to the list (List) parameterized by type AbstractDrone and output them to the console using a for-each loop.
+
+#LEVEL II
+
+For the task described in the first level, you should add:
+
+A method that allows you to add a new object in the DroneManager class, which is a descendant of the addDrone abstract class.
+
+Two object search methods in the DroneManager class
+For example, it can be a method to find all Drones that fly faster than a given speed -findAllWithSpeedGreaterThan(double currentSpeed)
+
+Search methods should use streams and lambda expressions
+
+#LEVEL III
+
+Create UML diagram.
