@@ -1,13 +1,13 @@
-package ua.lviv.iot.algo.part1.lab2;
+package ua.lviv.iot.algo.part1.lab3;
 
 public class UnderwaterDrone extends AbstractDrone {
-    private double fuelCapacityInLiters;
+    private final double fuelCapacityInLiters;
     private double currentFuelLevel;
-    private double consumptionFuelPerHundredKm;
+    private final double consumptionFuelPerHundredKm;
     private double currentMaxFlyingDistance;
 
-    UnderwaterDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm
-            , double currentSpeed, double currentAltitude) {
+    UnderwaterDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm,
+                    double currentSpeed, double currentAltitude) {
         super(currentSpeed, currentAltitude);
         this.fuelCapacityInLiters = fuelCapacityInLiters;
         this.currentFuelLevel = currentFuelLevel;
@@ -25,6 +25,7 @@ public class UnderwaterDrone extends AbstractDrone {
         currentMaxFlyingDistance = (currentFuelLevel / consumptionFuelPerHundredKm) * 100;
     }
 
+    @Override
     public String toString() {
         return "UnderwaterDrone - " + super.toString() + " fuelCapacity=" + fuelCapacityInLiters
                 + "l, consumptionFuelPerHundredKm=" + consumptionFuelPerHundredKm

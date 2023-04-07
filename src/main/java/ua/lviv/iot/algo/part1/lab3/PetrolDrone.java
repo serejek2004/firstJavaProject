@@ -1,14 +1,14 @@
-package ua.lviv.iot.algo.part1.lab2;
+package ua.lviv.iot.algo.part1.lab3;
 
 public class PetrolDrone extends AbstractDrone {
-    private double fuelCapacityInLiters;
+    private final double fuelCapacityInLiters;
     private double currentFuelLevel;
-    private double consumptionFuelPerHundredKm;
-    private String typeFuel;
+    private final double consumptionFuelPerHundredKm;
+    private final String typeFuel;
     private double currentMaxFlyingDistance;
 
-    PetrolDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm, String typeFuel
-            , double currentSpeed, double currentAltitude) {
+    PetrolDrone(double fuelCapacityInLiters, double currentFuelLevel,
+                double consumptionFuelPerHundredKm, String typeFuel, double currentSpeed, double currentAltitude) {
         super(currentSpeed, currentAltitude);
         this.fuelCapacityInLiters = fuelCapacityInLiters;
         this.currentFuelLevel = currentFuelLevel;
@@ -16,26 +16,24 @@ public class PetrolDrone extends AbstractDrone {
         this.typeFuel = typeFuel;
     }
 
+    public double getCurrentFuelLevel() {
+        return currentFuelLevel;
+    }
+
     public double refuel(double amount) {
         if (currentFuelLevel < fuelCapacityInLiters) {
             currentFuelLevel += amount;
         }
         if (currentFuelLevel > fuelCapacityInLiters) {
-            System.out.println("Error");
-            return refuel(amount);
+            currentFuelLevel -= amount;
         }
-        System.out.println("Success");
         return currentFuelLevel;
     }
 
     public double useFuel(double amount) {
-        if (currentFuelLevel > 0) {
+        if (currentFuelLevel > amount) {
             currentFuelLevel -= amount;
-        } else {
-            System.out.println("Error");
-            return useFuel(amount);
         }
-        System.out.println("Success");
         return currentFuelLevel;
     }
 

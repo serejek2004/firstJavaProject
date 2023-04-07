@@ -1,17 +1,21 @@
-package ua.lviv.iot.algo.part1.lab2;
+package ua.lviv.iot.algo.part1.lab3;
 
 public class ElectroDrone extends AbstractDrone {
     private double currentBattaryLevelInMA;
-    private double battaryCapacity;
-    private double consumptionBattaryPerHundredKm;
+    private final double battaryCapacity;
+    private final double consumptionBattaryPerHundredKm;
     private double currentMaxFlyingDistance;
 
-    ElectroDrone(double currentBattaryLevelInMA, double battaryCapacity, double consumptionBattaryPerHundredKm
-            , double currentSpeed, double currentAltitude) {
+    ElectroDrone(double currentBattaryLevelInMA, double battaryCapacity, double consumptionBattaryPerHundredKm,
+                 double currentSpeed, double currentAltitude) {
         super(currentSpeed, currentAltitude);
         this.currentBattaryLevelInMA = currentBattaryLevelInMA;
         this.battaryCapacity = battaryCapacity;
         this.consumptionBattaryPerHundredKm = consumptionBattaryPerHundredKm;
+    }
+
+    public double getCurrentBattaryLevelInMA() {
+        return currentBattaryLevelInMA;
     }
 
     public double chargeBattary(double amount) {
@@ -19,21 +23,15 @@ public class ElectroDrone extends AbstractDrone {
             currentBattaryLevelInMA += amount;
         }
         if (currentBattaryLevelInMA > battaryCapacity) {
-            System.out.println("Error");
-            return chargeBattary(amount);
+            currentBattaryLevelInMA -= amount;
         }
-        System.out.println("Success");
         return currentBattaryLevelInMA;
     }
 
     public double useBattary(double amount) {
         if (currentBattaryLevelInMA > 0) {
             currentBattaryLevelInMA -= amount;
-        } else {
-            System.out.println("Error");
-            return useBattary(amount);
         }
-        System.out.println("Success");
         return currentBattaryLevelInMA;
     }
 
@@ -48,6 +46,7 @@ public class ElectroDrone extends AbstractDrone {
         currentMaxFlyingDistance = (currentBattaryLevelInMA / consumptionBattaryPerHundredKm) * 100;
     }
 
+    @Override
     public String toString() {
         return "ElectroDrone - " + super.toString() + " currentBattaryLevelInMA=" + currentBattaryLevelInMA + ", battaryCapacity="
                 + battaryCapacity + ", consumptionBattaryPerHundredKm=" + consumptionBattaryPerHundredKm
