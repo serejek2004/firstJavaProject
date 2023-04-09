@@ -1,34 +1,41 @@
 package ua.lviv.iot.algo.part1.lab3;
 
-public class UnderwaterDrone extends AbstractDrone {
-    private final double fuelCapacityInLiters;
+public final class UnderwaterDrone extends AbstractDrone {
+    private final double fuelCapacity;
     private double currentFuelLevel;
-    private final double consumptionFuelPerHundredKm;
+    private double consumptionFuel;
     private double currentMaxFlyingDistance;
 
-    UnderwaterDrone(double fuelCapacityInLiters, double currentFuelLevel, double consumptionFuelPerHundredKm,
-                    double currentSpeed, double currentAltitude) {
+    public UnderwaterDrone(final double fuelCapacity,
+                    final double currentFuelLevel,
+                    final double consumptionFuel,
+                    final double currentSpeed,
+                    final double currentAltitude) {
         super(currentSpeed, currentAltitude);
-        this.fuelCapacityInLiters = fuelCapacityInLiters;
+        this.fuelCapacity = fuelCapacity;
         this.currentFuelLevel = currentFuelLevel;
-        this.consumptionFuelPerHundredKm = consumptionFuelPerHundredKm;
+        this.consumptionFuel = consumptionFuel;
     }
 
     @Override
-    public void flyAt(double speedMetersPerMinute, double altitude) {
+    public void flyAt(final double speedMetersPerMinute,
+                      final double altitude) {
         setCurrentSpeed(speedMetersPerMinute);
         setCurrentAltitude(altitude);
     }
 
     @Override
     public void getMaxFlyingDistanceAtCurrentSpeed() {
-        currentMaxFlyingDistance = (currentFuelLevel / consumptionFuelPerHundredKm) * 100;
+        final int formulaNumber = 100;
+        currentMaxFlyingDistance =
+                (currentFuelLevel / consumptionFuel) * formulaNumber;
     }
 
     @Override
     public String toString() {
-        return "UnderwaterDrone - " + super.toString() + " fuelCapacity=" + fuelCapacityInLiters
-                + "l, consumptionFuelPerHundredKm=" + consumptionFuelPerHundredKm
+        return "UnderwaterDrone - " + super.toString()
+                + " fuelCapacity=" + fuelCapacity
+                + "l, consumptionFuel=" + consumptionFuel
                 + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
     }
 }

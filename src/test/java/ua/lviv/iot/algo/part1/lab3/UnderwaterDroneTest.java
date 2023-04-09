@@ -18,7 +18,7 @@ class UnderwaterDroneTest {
         UnderwaterDrone firstDrone = new UnderwaterDrone(60.0, 50, 10, 30, -400);
         firstDrone.getMaxFlyingDistanceAtCurrentSpeed();
         String expected = "UnderwaterDrone - currentSpeed=30.0, currentAltitude=-400.0 fuelCapacity=60.0l," +
-                " consumptionFuelPerHundredKm=10.0, currentMaxFlyingDistance=500.0";
+                " consumptionFuel=10.0, currentMaxFlyingDistance=500.0";
         String actual = firstDrone.toString();
         Assertions.assertEquals(expected, actual);
     }
@@ -27,7 +27,7 @@ class UnderwaterDroneTest {
     void testToStringForUnderwaterDrone() {
         UnderwaterDrone firstDrone = new UnderwaterDrone(60.0, 50, 10, 30, -400);
         String expected = "UnderwaterDrone - currentSpeed=30.0, currentAltitude=-400.0 fuelCapacity=60.0l," +
-                " consumptionFuelPerHundredKm=10.0, currentMaxFlyingDistance=0.0";
+                " consumptionFuel=10.0, currentMaxFlyingDistance=0.0";
         String actual = firstDrone.toString();
         Assertions.assertEquals(expected, actual);
     }

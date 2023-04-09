@@ -1,55 +1,64 @@
 package ua.lviv.iot.algo.part1.lab3;
 
-public class ElectroDrone extends AbstractDrone {
-    private double currentBattaryLevelInMA;
+public final class ElectroDrone extends AbstractDrone {
     private final double battaryCapacity;
-    private final double consumptionBattaryPerHundredKm;
+    private double consumptionBattary;
+    private double currentBattaryLevel;
     private double currentMaxFlyingDistance;
 
-    ElectroDrone(double currentBattaryLevelInMA, double battaryCapacity, double consumptionBattaryPerHundredKm,
-                 double currentSpeed, double currentAltitude) {
+    ElectroDrone(final double currentBattaryLevel,
+                 final double battaryCapacity,
+                 final double consumptionBattary,
+                 final double currentSpeed,
+                 final double currentAltitude) {
         super(currentSpeed, currentAltitude);
-        this.currentBattaryLevelInMA = currentBattaryLevelInMA;
+        this.currentBattaryLevel = currentBattaryLevel;
         this.battaryCapacity = battaryCapacity;
-        this.consumptionBattaryPerHundredKm = consumptionBattaryPerHundredKm;
+        this.consumptionBattary = consumptionBattary;
     }
 
     public double getCurrentBattaryLevelInMA() {
-        return currentBattaryLevelInMA;
+        return currentBattaryLevel;
     }
 
-    public double chargeBattary(double amount) {
-        if (currentBattaryLevelInMA < battaryCapacity) {
-            currentBattaryLevelInMA += amount;
+    public double chargeBattary(final double amount) {
+        if (currentBattaryLevel < battaryCapacity) {
+            currentBattaryLevel += amount;
         }
-        if (currentBattaryLevelInMA > battaryCapacity) {
-            currentBattaryLevelInMA -= amount;
+        if (currentBattaryLevel > battaryCapacity) {
+            currentBattaryLevel -= amount;
         }
-        return currentBattaryLevelInMA;
+        return currentBattaryLevel;
     }
 
-    public double useBattary(double amount) {
-        if (currentBattaryLevelInMA > 0) {
-            currentBattaryLevelInMA -= amount;
+    public double useBattary(final double amount) {
+        if (currentBattaryLevel > 0) {
+            currentBattaryLevel -= amount;
         }
-        return currentBattaryLevelInMA;
+        return currentBattaryLevel;
     }
 
     @Override
-    public void flyAt(double speedMetersPerMinute, double altitude) {
+    public void flyAt(final double speedMetersPerMinute,
+                      final double altitude) {
         setCurrentSpeed(speedMetersPerMinute);
         setCurrentAltitude(altitude);
     }
 
     @Override
     public void getMaxFlyingDistanceAtCurrentSpeed() {
-        currentMaxFlyingDistance = (currentBattaryLevelInMA / consumptionBattaryPerHundredKm) * 100;
+        final int formulaNumber = 100;
+        currentMaxFlyingDistance =
+                (currentBattaryLevel / consumptionBattary)
+                        * formulaNumber;
     }
 
     @Override
     public String toString() {
-        return "ElectroDrone - " + super.toString() + " currentBattaryLevelInMA=" + currentBattaryLevelInMA + ", battaryCapacity="
-                + battaryCapacity + ", consumptionBattaryPerHundredKm=" + consumptionBattaryPerHundredKm
+        return "ElectroDrone - " + super.toString()
+                + " currentBattaryLevel=" + currentBattaryLevel
+                + ", battaryCapacity=" + battaryCapacity
+                + ", consumptionBattary=" + consumptionBattary
                 + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
     }
 }

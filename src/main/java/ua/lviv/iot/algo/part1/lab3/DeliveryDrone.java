@@ -1,37 +1,44 @@
 package ua.lviv.iot.algo.part1.lab3;
 
-public class DeliveryDrone extends AbstractDrone {
-    private double currentBattaryLevelInMA;
+public final class DeliveryDrone extends AbstractDrone {
     private final double battaryCapacity;
-    private final double consumptionBattaryPerHundredKm;
+    private double currentBattaryLevel;
+    private double consumptionBattary;
     private double currentMaxFlyingDistance;
 
-    DeliveryDrone(double currentBattaryLevelInMA, double battaryCapacity, double consumptionBattaryPerHundredKm,
-                  double currentSpeed, double currentAltitude) {
+    DeliveryDrone(final double currentBattaryLevel,
+                  final double battaryCapacity,
+                  final double consumptionBattary,
+                  final double currentSpeed,
+                  final double currentAltitude) {
         super(currentSpeed, currentAltitude);
-        this.currentBattaryLevelInMA = currentBattaryLevelInMA;
+        this.currentBattaryLevel = currentBattaryLevel;
         this.battaryCapacity = battaryCapacity;
-        this.consumptionBattaryPerHundredKm = consumptionBattaryPerHundredKm;
+        this.consumptionBattary = consumptionBattary;
 
     }
 
     @Override
-    public void flyAt(double speedMetersPerMinute, double altitude) {
+    public void flyAt(final double speedMetersPerMinute,
+                      final double altitude) {
         setCurrentSpeed(speedMetersPerMinute);
         setCurrentAltitude(altitude);
     }
 
     @Override
     public void getMaxFlyingDistanceAtCurrentSpeed() {
-        currentMaxFlyingDistance = (currentBattaryLevelInMA / consumptionBattaryPerHundredKm) * 100;
+        final int formulaNumber = 100;
+        currentMaxFlyingDistance =
+                (currentBattaryLevel / consumptionBattary)
+                        * formulaNumber;
     }
 
     @Override
     public String toString() {
         return "DeliveryDrone - " + super.toString()
-                + " currentBattaryLevelInMA=" + currentBattaryLevelInMA
+                + " currentBattaryLevel=" + currentBattaryLevel
                 + ", battaryCapacity=" + battaryCapacity
-                + ", consumptionBattaryPerHundredKm=" + consumptionBattaryPerHundredKm
+                + ", consumptionBattary=" + consumptionBattary
                 + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
     }
 }

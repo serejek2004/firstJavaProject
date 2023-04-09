@@ -1,36 +1,40 @@
 package ua.lviv.iot.algo.part1.lab3;
 
-public class PetrolDrone extends AbstractDrone {
-    private final double fuelCapacityInLiters;
-    private double currentFuelLevel;
-    private final double consumptionFuelPerHundredKm;
+public final class PetrolDrone extends AbstractDrone {
+    private final double fuelCapacity;
     private final String typeFuel;
+    private double consumptionFuel;
     private double currentMaxFlyingDistance;
+    private double currentFuelLevel;
 
-    PetrolDrone(double fuelCapacityInLiters, double currentFuelLevel,
-                double consumptionFuelPerHundredKm, String typeFuel, double currentSpeed, double currentAltitude) {
+    PetrolDrone(final double fuelCapacity,
+                final double currentFuelLevel,
+                final double consumptionFuel,
+                final String typeFuel,
+                final double currentSpeed,
+                final double currentAltitude) {
         super(currentSpeed, currentAltitude);
-        this.fuelCapacityInLiters = fuelCapacityInLiters;
-        this.currentFuelLevel = currentFuelLevel;
-        this.consumptionFuelPerHundredKm = consumptionFuelPerHundredKm;
+        this.fuelCapacity = fuelCapacity;
+        this.consumptionFuel = consumptionFuel;
         this.typeFuel = typeFuel;
+        this.currentFuelLevel = currentFuelLevel;
     }
 
     public double getCurrentFuelLevel() {
         return currentFuelLevel;
     }
 
-    public double refuel(double amount) {
-        if (currentFuelLevel < fuelCapacityInLiters) {
+    public double refuel(final double amount) {
+        if (currentFuelLevel < fuelCapacity) {
             currentFuelLevel += amount;
         }
-        if (currentFuelLevel > fuelCapacityInLiters) {
+        if (currentFuelLevel > fuelCapacity) {
             currentFuelLevel -= amount;
         }
         return currentFuelLevel;
     }
 
-    public double useFuel(double amount) {
+    public double useFuel(final double amount) {
         if (currentFuelLevel > amount) {
             currentFuelLevel -= amount;
         }
@@ -38,20 +42,26 @@ public class PetrolDrone extends AbstractDrone {
     }
 
     @Override
-    public void flyAt(double speedMetersPerMinute, double altitude) {
+    public void flyAt(final double speedMetersPerMinute,
+                      final double altitude) {
         setCurrentSpeed(speedMetersPerMinute);
         setCurrentAltitude(altitude);
     }
 
     @Override
     public void getMaxFlyingDistanceAtCurrentSpeed() {
-        currentMaxFlyingDistance = (currentFuelLevel / consumptionFuelPerHundredKm) * 100;
+        final int formulaNumber = 100;
+        currentMaxFlyingDistance =
+                (currentFuelLevel / consumptionFuel)
+                        * formulaNumber;
     }
 
     @Override
     public String toString() {
-        return "PetrolDrone - " + super.toString() + " fuelCapacity=" + fuelCapacityInLiters
-                + "l, consumptionFuelPerHundredKm=" + consumptionFuelPerHundredKm + " typeFuel -- " + typeFuel
+        return "PetrolDrone - " + super.toString()
+                + " fuelCapacity=" + fuelCapacity
+                + "l, consumptionFuel=" + consumptionFuel
+                + " typeFuel - " + typeFuel
                 + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
     }
 }

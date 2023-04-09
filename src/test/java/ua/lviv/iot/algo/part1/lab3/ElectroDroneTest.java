@@ -45,8 +45,8 @@ class ElectroDroneTest {
     void testGetMaxFlyingDistanceAtCurrentSpeedForElectroDrone() {
         ElectroDrone firstDrone = new ElectroDrone(2000, 6000, 500, 100, 500);
         firstDrone.getMaxFlyingDistanceAtCurrentSpeed();
-        String expected = "ElectroDrone - currentSpeed=100.0, currentAltitude=500.0 currentBattaryLevelInMA=2000.0, " +
-                "battaryCapacity=6000.0, consumptionBattaryPerHundredKm=500.0, currentMaxFlyingDistance=400.0";
+        String expected = "ElectroDrone - currentSpeed=100.0, currentAltitude=500.0 currentBattaryLevel=2000.0, " +
+                "battaryCapacity=6000.0, consumptionBattary=500.0, currentMaxFlyingDistance=400.0";
         String actual = firstDrone.toString();
         Assertions.assertEquals(expected, actual);
     }
@@ -54,8 +54,8 @@ class ElectroDroneTest {
     @Test
     void testToStringForElectroDrone() {
         ElectroDrone firstDrone = new ElectroDrone(2000, 6000, 500, 100, 500);
-        String expected = "ElectroDrone - currentSpeed=100.0, currentAltitude=500.0 currentBattaryLevelInMA=2000.0, " +
-                "battaryCapacity=6000.0, consumptionBattaryPerHundredKm=500.0, currentMaxFlyingDistance=0.0";
+        String expected = "ElectroDrone - currentSpeed=100.0, currentAltitude=500.0 currentBattaryLevel=2000.0, " +
+                "battaryCapacity=6000.0, consumptionBattary=500.0, currentMaxFlyingDistance=0.0";
         String actual = firstDrone.toString();
         Assertions.assertEquals(expected, actual);
     }

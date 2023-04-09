@@ -46,7 +46,7 @@ class PetrolDroneTest {
         PetrolDrone firstDrone = new PetrolDrone(700, 600, 50, "React", 60, 350);
         firstDrone.getMaxFlyingDistanceAtCurrentSpeed();
         String expected = "PetrolDrone - currentSpeed=60.0, currentAltitude=350.0 fuelCapacity=700.0l, " +
-                "consumptionFuelPerHundredKm=50.0 typeFuel -- React, currentMaxFlyingDistance=1200.0";
+                "consumptionFuel=50.0 typeFuel - React, currentMaxFlyingDistance=1200.0";
         String actual = firstDrone.toString();
         Assertions.assertEquals(expected, actual);
     }
@@ -55,7 +55,7 @@ class PetrolDroneTest {
     void testToStringForPetrolDrone() {
         PetrolDrone firstDrone = new PetrolDrone(700, 600, 50, "React", 60, 350);
         String expected = "PetrolDrone - currentSpeed=60.0, currentAltitude=350.0 fuelCapacity=700.0l, " +
-                "consumptionFuelPerHundredKm=50.0 typeFuel -- React, currentMaxFlyingDistance=0.0";
+                "consumptionFuel=50.0 typeFuel - React, currentMaxFlyingDistance=0.0";
         String actual = firstDrone.toString();
         Assertions.assertEquals(expected, actual);
     }
