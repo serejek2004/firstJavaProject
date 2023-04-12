@@ -25,7 +25,7 @@ public final class UnderwaterDrone extends AbstractDrone {
     }
 
     @Override
-    public void getMaxFlyingDistanceAtCurrentSpeed() {
+    public void calculateMaxFlyingDistanceAtCurrentSpeed() {
         final int formulaNumber = 100;
         currentMaxFlyingDistance =
                 (currentFuelLevel / consumptionFuel) * formulaNumber;

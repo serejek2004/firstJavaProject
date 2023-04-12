@@ -49,7 +49,7 @@ public final class PetrolDrone extends AbstractDrone {
     }
 
     @Override
-    public void getMaxFlyingDistanceAtCurrentSpeed() {
+    public void calculateMaxFlyingDistanceAtCurrentSpeed() {
         final int formulaNumber = 100;
         currentMaxFlyingDistance =
                 (currentFuelLevel / consumptionFuel)

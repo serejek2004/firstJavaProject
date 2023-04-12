@@ -46,7 +46,7 @@ public final class ElectroDrone extends AbstractDrone {
     }
 
     @Override
-    public void getMaxFlyingDistanceAtCurrentSpeed() {
+    public void calculateMaxFlyingDistanceAtCurrentSpeed() {
         final int formulaNumber = 100;
         currentMaxFlyingDistance =
                 (currentBattaryLevel / consumptionBattary)

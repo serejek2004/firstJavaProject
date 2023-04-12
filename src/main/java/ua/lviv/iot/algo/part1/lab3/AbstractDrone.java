@@ -14,7 +14,7 @@ public abstract class AbstractDrone {
 
     public abstract void flyAt(double speedMetersPerMinute, double altitude);
 
-    public abstract void getMaxFlyingDistanceAtCurrentSpeed();
+    public abstract void calculateMaxFlyingDistanceAtCurrentSpeed();
 
     public String toString() {
         return "currentSpeed=" + currentSpeed
