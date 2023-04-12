@@ -1,20 +1,20 @@
 package ua.lviv.iot.algo.part1.lab3;
 
 public final class DeliveryDrone extends AbstractDrone {
-    private final double battaryCapacity;
-    private double currentBattaryLevel;
-    private double consumptionBattary;
+    private final double batteryCapacity;
+    private double currentBatteryLevel;
+    private double consumptionBattery;
     private double currentMaxFlyingDistance;
 
-    DeliveryDrone(final double currentBattaryLevel,
-                  final double battaryCapacity,
-                  final double consumptionBattary,
+    DeliveryDrone(final double currentBatteryLevel,
+                  final double batteryCapacity,
+                  final double consumptionBattery,
                   final double currentSpeed,
                   final double currentAltitude) {
         super(currentSpeed, currentAltitude);
-        this.currentBattaryLevel = currentBattaryLevel;
-        this.battaryCapacity = battaryCapacity;
-        this.consumptionBattary = consumptionBattary;
+        this.currentBatteryLevel = currentBatteryLevel;
+        this.batteryCapacity = batteryCapacity;
+        this.consumptionBattery = consumptionBattery;
 
     }
 
@@ -29,16 +29,16 @@ public final class DeliveryDrone extends AbstractDrone {
     public void calculateMaxFlyingDistanceAtCurrentSpeed() {
         final int formulaNumber = 100;
         currentMaxFlyingDistance =
-                (currentBattaryLevel / consumptionBattary)
+                (currentBatteryLevel / consumptionBattery)
                         * formulaNumber;
     }
 
     @Override
     public String toString() {
         return "DeliveryDrone - " + super.toString()
-                + " currentBattaryLevel=" + currentBattaryLevel
-                + ", battaryCapacity=" + battaryCapacity
-                + ", consumptionBattary=" + consumptionBattary
+                + " currentBatteryLevel=" + currentBatteryLevel
+                + ", batteryCapacity=" + batteryCapacity
+                + ", consumptionBattery=" + consumptionBattery
                 + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
     }
 }
