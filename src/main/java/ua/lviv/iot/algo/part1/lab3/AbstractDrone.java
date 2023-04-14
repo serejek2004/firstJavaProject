@@ -1,14 +1,12 @@
-package ua.lviv.iot.algo.part1.lab2;
+package ua.lviv.iot.algo.part1.lab3;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Setter
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 
 public abstract class AbstractDrone {
     private double currentSpeed;
@@ -16,9 +14,10 @@ public abstract class AbstractDrone {
 
     public abstract void flyAt(double speedMetersPerMinute, double altitude);
 
-    public abstract void getMaxFlyingDistanceAtCurrentSpeed();
+    public abstract void calculateMaxFlyingDistanceAtCurrentSpeed();
 
     public String toString() {
-        return "currentSpeed=" + currentSpeed + ", currentAltitude=" + currentAltitude;
+        return "currentSpeed=" + currentSpeed
+                + ", currentAltitude=" + currentAltitude;
     }
 }
