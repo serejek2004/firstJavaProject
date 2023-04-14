@@ -22,17 +22,31 @@ class UnderwaterDroneTest {
     @Test
     public void testGetMaxFlyingDistanceAtCurrentSpeedForUnderwaterDrone() {
         firstDrone.calculateMaxFlyingDistanceAtCurrentSpeed();
-        String expected = "UnderwaterDrone - currentSpeed=30.0, currentAltitude=-400.0 fuelCapacity=60.0l," +
-                " consumptionFuel=10.0, currentMaxFlyingDistance=500.0";
-        String actual = firstDrone.toString();
-        Assertions.assertEquals(expected, actual);
+        final int formulaNumber = 100;
+        double expectedMaxFlyingDistance = (firstDrone.getCurrentFuelLevel() / firstDrone.getConsumptionFuel())
+                * formulaNumber;
+        Assertions.assertEquals(expectedMaxFlyingDistance, firstDrone.getCurrentMaxFlyingDistance());
     }
 
     @Test
-    public void testToStringForUnderwaterDrone() {
-        String expected = "UnderwaterDrone - currentSpeed=30.0, currentAltitude=-400.0 fuelCapacity=60.0l," +
-                " consumptionFuel=10.0, currentMaxFlyingDistance=0.0";
-        String actual = firstDrone.toString();
-        Assertions.assertEquals(expected, actual);
+    public void testGetHeadersForUnderwaterDrone() {
+        String expectedString = ",currentSpeed," +
+                "currentAltitude,currentFuelLevel," +
+                "fuelCapacity,consumptionFuel," +
+                "currentMaxFlyingDistance";
+        String actual = firstDrone.getHeaders();
+        Assertions.assertEquals(expectedString, actual);
+    }
+
+    @Test
+    public void testToCSVForUnderwaterDrone() {
+        String expectedString = "," + firstDrone.getCurrentSpeed() + ","
+                + firstDrone.getCurrentAltitude() + ","
+                + firstDrone.getCurrentFuelLevel() + ","
+                + firstDrone.getFuelCapacity() + ","
+                + firstDrone.getConsumptionFuel() + ","
+                + firstDrone.getCurrentMaxFlyingDistance();
+        String actual = firstDrone.toCSV();
+        Assertions.assertEquals(expectedString, actual);
     }
 }

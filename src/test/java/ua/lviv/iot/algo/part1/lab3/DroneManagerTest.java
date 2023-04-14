@@ -8,11 +8,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 class DroneManagerTest {
-    DroneManager manager = new DroneManager();
-    List<AbstractDrone> expectedDroneList = new LinkedList<>();
+    DroneManager manager;
+    List<AbstractDrone> expectedDroneList;
 
     @BeforeEach
     public void setUpAll() {
+        manager = new DroneManager();
+        expectedDroneList = new LinkedList<>();
         ElectroDrone battleELectroDrone = new ElectroDrone(2000, 6000, 500, 1500, 500);
         ElectroDrone exploratoryElectroDrone = new ElectroDrone(3000, 6500, 1000, 2050, 600);
         UnderwaterDrone battleUnderwaterDrone = new UnderwaterDrone(60.0, 50, 10, 30, -400);

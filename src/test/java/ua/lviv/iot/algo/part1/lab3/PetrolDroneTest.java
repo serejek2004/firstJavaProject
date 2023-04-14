@@ -9,7 +9,7 @@ class PetrolDroneTest {
 
     @BeforeEach
     public void setUpAll() {
-        firstDrone = new PetrolDrone(700, 600, 50, "React", 60, 350);
+        firstDrone = new PetrolDrone(700, 600, 50, 60, 350);
     }
 
     @Test
@@ -46,17 +46,31 @@ class PetrolDroneTest {
     @Test
     public void testGetMaxFlyingDistanceAtCurrentSpeedForPetrolDrone() {
         firstDrone.calculateMaxFlyingDistanceAtCurrentSpeed();
-        String expected = "PetrolDrone - currentSpeed=60.0, currentAltitude=350.0 fuelCapacity=700.0l, " +
-                "consumptionFuel=50.0 typeFuel - React, currentMaxFlyingDistance=1200.0";
-        String actual = firstDrone.toString();
-        Assertions.assertEquals(expected, actual);
+        final int formulaNumber = 100;
+        double expectedMaxFlyingDistance = (firstDrone.getCurrentFuelLevel() / firstDrone.getConsumptionFuel())
+                * formulaNumber;
+        Assertions.assertEquals(expectedMaxFlyingDistance, firstDrone.getCurrentMaxFlyingDistance());
     }
 
     @Test
-    public void testToStringForPetrolDrone() {
-        String expected = "PetrolDrone - currentSpeed=60.0, currentAltitude=350.0 fuelCapacity=700.0l, " +
-                "consumptionFuel=50.0 typeFuel - React, currentMaxFlyingDistance=0.0";
-        String actual = firstDrone.toString();
-        Assertions.assertEquals(expected, actual);
+    public void testGetHeadersForPetrolDrone() {
+        String expectedString = ",currentSpeed," +
+                "currentAltitude,currentFuelLevel," +
+                "fuelCapacity,consumptionFuel," +
+                "currentMaxFlyingDistance";
+        String actual = firstDrone.getHeaders();
+        Assertions.assertEquals(expectedString, actual);
+    }
+
+    @Test
+    public void testToCSVForPetrolDrone() {
+        String expectedString = "," + firstDrone.getCurrentSpeed() + ","
+                + firstDrone.getCurrentAltitude() + ","
+                + firstDrone.getCurrentFuelLevel() + ","
+                + firstDrone.getFuelCapacity() + ","
+                + firstDrone.getConsumptionFuel() + ","
+                + firstDrone.getCurrentMaxFlyingDistance();
+        String actual = firstDrone.toCSV();
+        Assertions.assertEquals(expectedString, actual);
     }
 }

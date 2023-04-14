@@ -47,17 +47,31 @@ class ElectroDroneTest {
     @Test
     public void testGetMaxFlyingDistanceAtCurrentSpeedForElectroDrone() {
         firstDrone.calculateMaxFlyingDistanceAtCurrentSpeed();
-        String expected = "ElectroDrone - currentSpeed=100.0, currentAltitude=500.0 currentBatteryLevel=250.0, " +
-                "batteryCapacity=6000.0, consumptionBattery=500.0, currentMaxFlyingDistance=50.0";
-        String actual = firstDrone.toString();
-        Assertions.assertEquals(expected, actual);
+        final int formulaNumber = 100;
+        double expectedMaxFlyingDistance = (firstDrone.getCurrentBatteryLevel() / firstDrone.getConsumptionBattery())
+                * formulaNumber;
+        Assertions.assertEquals(expectedMaxFlyingDistance, firstDrone.getCurrentMaxFlyingDistance());
     }
 
     @Test
-    public void testToStringForElectroDrone() {
-        String expected = "ElectroDrone - currentSpeed=100.0, currentAltitude=500.0 currentBatteryLevel=250.0, " +
-                "batteryCapacity=6000.0, consumptionBattery=500.0, currentMaxFlyingDistance=0.0";
-        String actual = firstDrone.toString();
-        Assertions.assertEquals(expected, actual);
+    public void testGetHeadersForElectroDrone() {
+        String expectedString = ",currentSpeed," +
+                "currentAltitude,currentBatteryLevel," +
+                "batteryCapacity,consumptionBattery," +
+                "currentMaxFlyingDistance";
+        String actual = firstDrone.getHeaders();
+        Assertions.assertEquals(expectedString, actual);
+    }
+
+    @Test
+    public void testToCSVForElectroDrone() {
+        String expectedString = "," + firstDrone.getCurrentSpeed() + ","
+                + firstDrone.getCurrentAltitude() + ","
+                + firstDrone.getCurrentBatteryLevel() + ","
+                + firstDrone.getBatteryCapacity() + ","
+                + firstDrone.getConsumptionBattery() + ","
+                + firstDrone.getCurrentMaxFlyingDistance();
+        String actual = firstDrone.toCSV();
+        Assertions.assertEquals(expectedString, actual);
     }
 }
