@@ -1,16 +1,20 @@
 package ua.lviv.iot.algo.part1.lab3;
 
+import lombok.Getter;
+
+@Getter
+
 public final class UnderwaterDrone extends AbstractDrone {
-    private final double fuelCapacity;
+    private double fuelCapacity;
     private double currentFuelLevel;
     private double consumptionFuel;
     private double currentMaxFlyingDistance;
 
     public UnderwaterDrone(final double fuelCapacity,
-                    final double currentFuelLevel,
-                    final double consumptionFuel,
-                    final double currentSpeed,
-                    final double currentAltitude) {
+                           final double currentFuelLevel,
+                           final double consumptionFuel,
+                           final double currentSpeed,
+                           final double currentAltitude) {
         super(currentSpeed, currentAltitude);
         this.fuelCapacity = fuelCapacity;
         this.currentFuelLevel = currentFuelLevel;
@@ -31,11 +35,19 @@ public final class UnderwaterDrone extends AbstractDrone {
                 (currentFuelLevel / consumptionFuel) * formulaNumber;
     }
 
+
     @Override
-    public String toString() {
-        return "UnderwaterDrone - " + super.toString()
-                + " fuelCapacity=" + fuelCapacity
-                + "l, consumptionFuel=" + consumptionFuel
-                + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
+    public String getHeaders() {
+        return super.getHeaders()
+                + ",currentFuelLevel,fuelCapacity,consumptionFuel,currentMaxFlyingDistance";
+    }
+
+    @Override
+    public String toCSV() {
+        return super.toCSV()
+                + currentFuelLevel + ","
+                + fuelCapacity + ","
+                + consumptionFuel + ","
+                + currentMaxFlyingDistance;
     }
 }

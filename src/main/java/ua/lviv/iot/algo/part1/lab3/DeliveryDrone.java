@@ -1,5 +1,9 @@
 package ua.lviv.iot.algo.part1.lab3;
 
+import lombok.Getter;
+
+@Getter
+
 public final class DeliveryDrone extends AbstractDrone {
     private final double batteryCapacity;
     private double currentBatteryLevel;
@@ -34,11 +38,17 @@ public final class DeliveryDrone extends AbstractDrone {
     }
 
     @Override
-    public String toString() {
-        return "DeliveryDrone - " + super.toString()
-                + " currentBatteryLevel=" + currentBatteryLevel
-                + ", batteryCapacity=" + batteryCapacity
-                + ", consumptionBattery=" + consumptionBattery
-                + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
+    public String getHeaders() {
+        return super.getHeaders()
+                + ",currentBatteryLevel,batteryCapacity,consumptionBattery,currentMaxFlyingDistance";
+    }
+
+    @Override
+    public String toCSV() {
+        return super.toCSV()
+                + currentBatteryLevel + ","
+                + batteryCapacity + ","
+                + consumptionBattery + ","
+                + currentMaxFlyingDistance;
     }
 }
