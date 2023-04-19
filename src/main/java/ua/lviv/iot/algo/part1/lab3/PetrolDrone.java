@@ -6,7 +6,7 @@ import lombok.Getter;
 
 public final class PetrolDrone extends AbstractDrone {
     private final double fuelCapacity;
-    private double consumptionFuel;
+    private final double consumptionFuel;
     private double currentMaxFlyingDistance;
     private double currentFuelLevel;
 
@@ -25,21 +25,19 @@ public final class PetrolDrone extends AbstractDrone {
         return currentFuelLevel;
     }
 
-    public double refuel(final double amount) {
+    public void refuel(final double amount) {
         if (currentFuelLevel < fuelCapacity) {
             currentFuelLevel += amount;
         }
         if (currentFuelLevel > fuelCapacity) {
             currentFuelLevel -= amount;
         }
-        return currentFuelLevel;
     }
 
-    public double useFuel(final double amount) {
+    public void useFuel(final double amount) {
         if (currentFuelLevel > amount) {
             currentFuelLevel -= amount;
         }
-        return currentFuelLevel;
     }
 
     @Override

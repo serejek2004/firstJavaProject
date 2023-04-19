@@ -6,8 +6,8 @@ import lombok.Getter;
 
 public final class DeliveryDrone extends AbstractDrone {
     private final double batteryCapacity;
-    private double currentBatteryLevel;
-    private double consumptionBattery;
+    private final double currentBatteryLevel;
+    private final double consumptionBattery;
     private double currentMaxFlyingDistance;
 
     DeliveryDrone(final double currentBatteryLevel,

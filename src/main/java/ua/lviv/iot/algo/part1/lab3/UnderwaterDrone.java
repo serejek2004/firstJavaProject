@@ -5,9 +5,9 @@ import lombok.Getter;
 @Getter
 
 public final class UnderwaterDrone extends AbstractDrone {
-    private double fuelCapacity;
-    private double currentFuelLevel;
-    private double consumptionFuel;
+    private final double fuelCapacity;
+    private final double currentFuelLevel;
+    private final double consumptionFuel;
     private double currentMaxFlyingDistance;
 
     public UnderwaterDrone(final double fuelCapacity,

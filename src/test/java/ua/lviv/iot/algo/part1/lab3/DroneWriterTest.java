@@ -1,15 +1,22 @@
 package ua.lviv.iot.algo.part1.lab3;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.LinkedList;
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class DroneWriterTest {
     DroneManager manager = new DroneManager();
+    DroneWriter fileWriter = new DroneWriter();
+    private static final String SRC_PATH_TEST_RESOURCES = "src/test/resources/";
+    private static final String FILE_DRONES = "FileDrones.csv";
+    private static final String EMPTY_FILE_DRONES = "EmptyFileDrones.csv";
+    private static final String EXPECTED_FILE_DRONES = "expectedFileDrones.csv";
 
     @BeforeEach
     public void setUp() throws FileNotFoundException {
@@ -28,50 +35,26 @@ public class DroneWriterTest {
             drone.calculateMaxFlyingDistanceAtCurrentSpeed();
         }
 
-        DroneWriter fileWriter = new DroneWriter();
-        fileWriter.writeToFile(manager.getDroneList(), "src/test/resources/FileDrones.csv");
+        fileWriter.writeToFile(manager.getDroneList(), SRC_PATH_TEST_RESOURCES + FILE_DRONES);
     }
 
-    @Test
-    public void testWriteToFileForDroneWriter() throws IOException {
-        String lineOfFile = "";
-        List<String> content = new LinkedList<>();
-        List<String> expectedContent = new LinkedList<>();
-        BufferedReader readerDronesFile = new BufferedReader(new FileReader("src/test/resources/FileDrones.csv"));
-        BufferedReader readerExpectedDronesFile;
-        readerExpectedDronesFile = new BufferedReader(new FileReader("src/test/resources/expectedFileDrones.csv"));
-        while ((lineOfFile = readerDronesFile.readLine()) != null) {
-            content.add(lineOfFile);
-        }
-        while ((lineOfFile = readerExpectedDronesFile.readLine()) != null) {
-            expectedContent.add(lineOfFile);
-        }
-        readerExpectedDronesFile.close();
-        readerDronesFile.close();
-        Assertions.assertEquals(content, expectedContent);
+    @AfterAll
+    public static void deleteExcessiveFiles() {
+        new File(SRC_PATH_TEST_RESOURCES + FILE_DRONES).delete();
+        new File(SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES).delete();
     }
 
     @Test
     public void testWriteToFileIsEmpty() throws IOException {
-        DroneManager emptyManager = new DroneManager();
-        String lineOfFile = "";
-        DroneWriter writer = new DroneWriter();
-        writer.writeToFile(emptyManager.getDroneList(), "src/test/resources/EmptyFileDrones.csv");
-        BufferedReader readerEmptyFile = new BufferedReader(new FileReader("src/test/resources/EmptyFileDrones.csv"));
-        while ((lineOfFile = readerEmptyFile.readLine()) != null) {
-            Assertions.assertNull(lineOfFile);
-        }
+        BufferedReader readerEmptyFile = new BufferedReader(new FileReader(SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES));
+        Assertions.assertNull(readerEmptyFile.readLine());
+        readerEmptyFile.close();
     }
 
     @Test
-    public void testEmptyFileAvailability() throws FileNotFoundException {
-        BufferedReader readerEmptyFile = new BufferedReader(new FileReader("src/test/resources/EmptyFileDrones.csv"));
-        Assertions.assertNotNull(readerEmptyFile);
-    }
-
-    @Test
-    public void testDronesFileAvailability() throws FileNotFoundException {
-        BufferedReader readerDronesFile = new BufferedReader(new FileReader("src/test/resources/FileDrones.csv"));
-        Assertions.assertNotNull(readerDronesFile);
+    public void testWriteToFileForDroneWriter() throws IOException {
+        Path filePath = Paths.get(SRC_PATH_TEST_RESOURCES + FILE_DRONES);
+        Path expectedFilePath = Paths.get(SRC_PATH_TEST_RESOURCES + EXPECTED_FILE_DRONES);
+        Assertions.assertEquals(-1L, Files.mismatch(filePath, expectedFilePath));
     }
 }
