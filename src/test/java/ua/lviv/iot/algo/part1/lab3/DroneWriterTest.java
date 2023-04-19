@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 
 public class DroneWriterTest {
     DroneManager manager = new DroneManager();
+    DroneManager emptyManager = new DroneManager();
     DroneWriter fileWriter = new DroneWriter();
     private static final String SRC_PATH_TEST_RESOURCES = "src/test/resources/";
     private static final String FILE_DRONES = "FileDrones.csv";
@@ -36,12 +37,13 @@ public class DroneWriterTest {
         }
 
         fileWriter.writeToFile(manager.getDroneList(), SRC_PATH_TEST_RESOURCES + FILE_DRONES);
+        fileWriter.writeToFile(emptyManager.getDroneList(), SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES);
     }
 
     @AfterAll
     public static void deleteExcessiveFiles() {
-        new File(SRC_PATH_TEST_RESOURCES + FILE_DRONES).delete();
-        new File(SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES).delete();
+//        new File(SRC_PATH_TEST_RESOURCES + FILE_DRONES).delete();
+//        new File(SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES).delete();
     }
 
     @Test

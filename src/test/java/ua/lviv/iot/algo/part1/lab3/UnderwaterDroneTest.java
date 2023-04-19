@@ -30,7 +30,7 @@ class UnderwaterDroneTest {
 
     @Test
     public void testGetHeadersForUnderwaterDrone() {
-        String expectedString = ",currentSpeed," +
+        String expectedString = "currentSpeed," +
                 "currentAltitude,currentFuelLevel," +
                 "fuelCapacity,consumptionFuel," +
                 "currentMaxFlyingDistance";
@@ -40,7 +40,7 @@ class UnderwaterDroneTest {
 
     @Test
     public void testToCSVForUnderwaterDrone() {
-        String expectedString = "," + firstDrone.getCurrentSpeed() + ","
+        String expectedString = firstDrone.getCurrentSpeed() + ","
                 + firstDrone.getCurrentAltitude() + ","
                 + firstDrone.getCurrentFuelLevel() + ","
                 + firstDrone.getFuelCapacity() + ","

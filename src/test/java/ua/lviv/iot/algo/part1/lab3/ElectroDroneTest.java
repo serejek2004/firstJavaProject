@@ -55,7 +55,7 @@ class ElectroDroneTest {
 
     @Test
     public void testGetHeadersForElectroDrone() {
-        String expectedString = ",currentSpeed," +
+        String expectedString = "currentSpeed," +
                 "currentAltitude,currentBatteryLevel," +
                 "batteryCapacity,consumptionBattery," +
                 "currentMaxFlyingDistance";
@@ -65,7 +65,7 @@ class ElectroDroneTest {
 
     @Test
     public void testToCSVForElectroDrone() {
-        String expectedString = "," + firstDrone.getCurrentSpeed() + ","
+        String expectedString = firstDrone.getCurrentSpeed() + ","
                 + firstDrone.getCurrentAltitude() + ","
                 + firstDrone.getCurrentBatteryLevel() + ","
                 + firstDrone.getBatteryCapacity() + ","

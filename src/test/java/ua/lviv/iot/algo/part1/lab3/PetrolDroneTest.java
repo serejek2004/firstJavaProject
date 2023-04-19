@@ -54,7 +54,7 @@ class PetrolDroneTest {
 
     @Test
     public void testGetHeadersForPetrolDrone() {
-        String expectedString = ",currentSpeed," +
+        String expectedString = "currentSpeed," +
                 "currentAltitude,currentFuelLevel," +
                 "fuelCapacity,consumptionFuel," +
                 "currentMaxFlyingDistance";
@@ -64,7 +64,7 @@ class PetrolDroneTest {
 
     @Test
     public void testToCSVForPetrolDrone() {
-        String expectedString = "," + firstDrone.getCurrentSpeed() + ","
+        String expectedString = firstDrone.getCurrentSpeed() + ","
                 + firstDrone.getCurrentAltitude() + ","
                 + firstDrone.getCurrentFuelLevel() + ","
                 + firstDrone.getFuelCapacity() + ","
