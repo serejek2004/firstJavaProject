@@ -42,8 +42,8 @@ public class DroneWriterTest {
 
     @AfterAll
     public static void deleteExcessiveFiles() {
-//        new File(SRC_PATH_TEST_RESOURCES + FILE_DRONES).delete();
-//        new File(SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES).delete();
+        new File(SRC_PATH_TEST_RESOURCES + FILE_DRONES).delete();
+        new File(SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES).delete();
     }
 
     @Test
