@@ -16,8 +16,11 @@ public abstract class AbstractDrone {
 
     public abstract void calculateMaxFlyingDistanceAtCurrentSpeed();
 
-    public String toString() {
-        return "currentSpeed=" + currentSpeed
-                + ", currentAltitude=" + currentAltitude;
+    public String getHeaders() {
+        return "currentSpeed,currentAltitude";
+    }
+
+    public String toCSV() {
+        return currentSpeed + "," + currentAltitude + ",";
     }
 }

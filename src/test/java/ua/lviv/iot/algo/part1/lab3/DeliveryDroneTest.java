@@ -13,6 +13,28 @@ class DeliveryDroneTest {
     }
 
     @Test
+    public void testGetHeadersForDeliveryDrone() {
+        String expectedString = "currentSpeed," +
+                "currentAltitude,currentBatteryLevel," +
+                "batteryCapacity,consumptionBattery," +
+                "currentMaxFlyingDistance";
+        String actual = firstDrone.getHeaders();
+        Assertions.assertEquals(expectedString, actual);
+    }
+
+    @Test
+    public void testToCSVForDeliveryDrone() {
+        String expectedString = firstDrone.getCurrentSpeed() + ","
+                + firstDrone.getCurrentAltitude() + ","
+                + firstDrone.getCurrentBatteryLevel() + ","
+                + firstDrone.getBatteryCapacity() + ","
+                + firstDrone.getConsumptionBattery() + ","
+                + firstDrone.getCurrentMaxFlyingDistance();
+        String actual = firstDrone.toCSV();
+        Assertions.assertEquals(expectedString, actual);
+    }
+
+    @Test
     public void testFlyAtForDeliveryDrone() {
         firstDrone.flyAt(50, 60);
         Assertions.assertEquals(50, firstDrone.getCurrentSpeed());
@@ -22,17 +44,9 @@ class DeliveryDroneTest {
     @Test
     public void testCalculateMaxFlyingDistanceAtCurrentSpeedForDeliveryDrone() {
         firstDrone.calculateMaxFlyingDistanceAtCurrentSpeed();
-        String expectedString = "DeliveryDrone - currentSpeed=20.0, currentAltitude=600.0 currentBatteryLevel=2500.0," +
-                " batteryCapacity=5000.0, consumptionBattery=250.0, currentMaxFlyingDistance=1000.0";
-        String actual = firstDrone.toString();
-        Assertions.assertEquals(expectedString, actual);
-    }
-
-    @Test
-    public void testToStringForDeliveryDrone() {
-        String expectedString = "DeliveryDrone - currentSpeed=20.0, currentAltitude=600.0 currentBatteryLevel=2500.0," +
-                " batteryCapacity=5000.0, consumptionBattery=250.0, currentMaxFlyingDistance=0.0";
-        String actual = firstDrone.toString();
-        Assertions.assertEquals(expectedString, actual);
+        final int formulaNumber = 100;
+        double expectedMaxFlyingDistance = (firstDrone.getCurrentBatteryLevel() / firstDrone.getConsumptionBattery())
+                * formulaNumber;
+        Assertions.assertEquals(expectedMaxFlyingDistance, firstDrone.getCurrentMaxFlyingDistance());
     }
 }

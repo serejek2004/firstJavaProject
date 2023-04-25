@@ -1,22 +1,23 @@
 package ua.lviv.iot.algo.part1.lab3;
 
+import lombok.Getter;
+
+@Getter
+
 public final class PetrolDrone extends AbstractDrone {
     private final double fuelCapacity;
-    private final String typeFuel;
-    private double consumptionFuel;
+    private final double consumptionFuel;
     private double currentMaxFlyingDistance;
     private double currentFuelLevel;
 
     PetrolDrone(final double fuelCapacity,
                 final double currentFuelLevel,
                 final double consumptionFuel,
-                final String typeFuel,
                 final double currentSpeed,
                 final double currentAltitude) {
         super(currentSpeed, currentAltitude);
         this.fuelCapacity = fuelCapacity;
         this.consumptionFuel = consumptionFuel;
-        this.typeFuel = typeFuel;
         this.currentFuelLevel = currentFuelLevel;
     }
 
@@ -24,21 +25,19 @@ public final class PetrolDrone extends AbstractDrone {
         return currentFuelLevel;
     }
 
-    public double refuel(final double amount) {
+    public void refuel(final double amount) {
         if (currentFuelLevel < fuelCapacity) {
             currentFuelLevel += amount;
         }
         if (currentFuelLevel > fuelCapacity) {
             currentFuelLevel -= amount;
         }
-        return currentFuelLevel;
     }
 
-    public double useFuel(final double amount) {
+    public void useFuel(final double amount) {
         if (currentFuelLevel > amount) {
             currentFuelLevel -= amount;
         }
-        return currentFuelLevel;
     }
 
     @Override
@@ -57,12 +56,18 @@ public final class PetrolDrone extends AbstractDrone {
     }
 
     @Override
-    public String toString() {
-        return "PetrolDrone - " + super.toString()
-                + " fuelCapacity=" + fuelCapacity
-                + "l, consumptionFuel=" + consumptionFuel
-                + " typeFuel - " + typeFuel
-                + ", currentMaxFlyingDistance=" + currentMaxFlyingDistance;
+    public String getHeaders() {
+        return super.getHeaders()
+                + ",currentFuelLevel,fuelCapacity,consumptionFuel,currentMaxFlyingDistance";
+    }
+
+    @Override
+    public String toCSV() {
+        return super.toCSV()
+                + currentFuelLevel + ","
+                + fuelCapacity + ","
+                + consumptionFuel + ","
+                + currentMaxFlyingDistance;
     }
 }
 
