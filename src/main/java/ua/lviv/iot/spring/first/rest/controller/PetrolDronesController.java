@@ -58,7 +58,6 @@ public final class PetrolDronesController {
         }
 
         droneService.deleteDrone(droneId);
-        droneService.setNextAvailableId(droneId);
 
         return ResponseEntity.status(HttpStatus.OK).build();
 
