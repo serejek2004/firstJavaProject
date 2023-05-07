@@ -3,16 +3,12 @@ package ua.lviv.iot.spring.first.rest.controller;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.iot.spring.first.rest.model.PetrolDrone;
 import ua.lviv.iot.spring.first.rest.service.PetrolDroneService;
 
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
 @Setter
@@ -24,41 +20,25 @@ public final class PetrolDronesController {
     @Autowired
     private PetrolDroneService droneService;
 
-    private final AtomicInteger idCounter = new AtomicInteger();
-
     @GetMapping(path = "get/{id}")
     public ResponseEntity<PetrolDrone> getDroneById(
             final @PathVariable("id") Integer droneId) {
 
-        if (!droneService.getPetrolDroneMap().containsKey(droneId)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-        return new ResponseEntity<>(
-                droneService.getPetrolDroneMap().get(droneId), HttpStatus.OK);
+        return droneService.getById(droneId);
 
     }
 
     @GetMapping(path = "getall")
     public List<PetrolDrone> getAllDrone() {
 
-        return new LinkedList<>(droneService.getPetrolDroneMap().values());
+        return droneService.getAll();
 
     }
 
-    @PostMapping(path = "spawn")
+    @PostMapping
     public PetrolDrone spawnDrone(final @RequestBody PetrolDrone petrolDrone) {
 
-        if (idCounter.get() != droneService.getNextAvailableId()) {
-            idCounter.set(droneService.getNextAvailableId());
-            petrolDrone.setId(idCounter.get());
-            droneService.getPetrolDroneMap().put(petrolDrone.getId(),
-                    petrolDrone);
-            return petrolDrone;
-        }
-
-        petrolDrone.setId(droneService.getNextAvailableId());
-        droneService.getPetrolDroneMap().put(petrolDrone.getId(), petrolDrone);
-        return petrolDrone;
+        return droneService.spawnDrone(petrolDrone);
 
     }
 
@@ -66,13 +46,7 @@ public final class PetrolDronesController {
     public ResponseEntity<PetrolDrone> deletePetrolDrone(
             final @PathVariable("id") Integer droneId) {
 
-        if (droneService.getPetrolDroneMap().remove(droneId) == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        droneService.getPetrolDroneMap().remove(droneId);
-        droneService.setNextAvailableId(droneId);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return droneService.deletePetrolDrone(droneId);
 
     }
 
@@ -81,13 +55,7 @@ public final class PetrolDronesController {
             final @RequestBody PetrolDrone petrolDrone,
             final @PathVariable("id") Integer droneId) {
 
-        if (!droneService.getPetrolDroneMap().containsKey(droneId)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        petrolDrone.setId(droneId);
-        droneService.getPetrolDroneMap().put(droneId, petrolDrone);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return droneService.updatePetrolDrone(petrolDrone, droneId);
 
     }
 }
