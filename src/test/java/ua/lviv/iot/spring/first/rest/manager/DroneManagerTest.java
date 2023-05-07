@@ -1,8 +1,12 @@
-package ua.lviv.iot.algo.part1.lab3;
+package ua.lviv.iot.spring.first.rest.manager;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ua.lviv.iot.spring.first.rest.manager.DroneManager;
+import ua.lviv.iot.spring.first.rest.model.AbstractDrone;
+import ua.lviv.iot.spring.first.rest.model.ElectroDrone;
+import ua.lviv.iot.spring.first.rest.model.UnderwaterDrone;
 
 import java.util.LinkedList;
 import java.util.List;

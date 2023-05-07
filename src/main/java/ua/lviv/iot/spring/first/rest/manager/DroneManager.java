@@ -1,6 +1,7 @@
-package ua.lviv.iot.algo.part1.lab3;
+package ua.lviv.iot.spring.first.rest.manager;
 
 import lombok.Getter;
+import ua.lviv.iot.spring.first.rest.model.AbstractDrone;
 
 import java.util.LinkedList;
 import java.util.List;
