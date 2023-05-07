@@ -17,7 +17,7 @@ public class DroneWriterTest {
     DroneManager manager = new DroneManager();
     DroneManager emptyManager = new DroneManager();
     DroneWriter fileWriter = new DroneWriter();
-    private static final String SRC_PATH_TEST_RESOURCES = "src/test/resources/";
+    private static final String SRC_PATH_TEST_JAVA_RESOURCES = "src/test/java/resources/";
     private static final String FILE_DRONES = "FileDrones.csv";
     private static final String EMPTY_FILE_DRONES = "EmptyFileDrones.csv";
     private static final String EXPECTED_FILE_DRONES = "expectedFileDrones.csv";
@@ -39,27 +39,27 @@ public class DroneWriterTest {
             drone.calculateMaxFlyingDistanceAtCurrentSpeed();
         }
 
-        fileWriter.writeToFile(manager.getDroneList(), SRC_PATH_TEST_RESOURCES + FILE_DRONES);
-        fileWriter.writeToFile(emptyManager.getDroneList(), SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES);
+        fileWriter.writeToFile(manager.getDroneList(), SRC_PATH_TEST_JAVA_RESOURCES + FILE_DRONES);
+        fileWriter.writeToFile(emptyManager.getDroneList(), SRC_PATH_TEST_JAVA_RESOURCES + EMPTY_FILE_DRONES);
     }
 
     @AfterAll
     public static void deleteExcessiveFiles() {
-        new File(SRC_PATH_TEST_RESOURCES + FILE_DRONES).delete();
-        new File(SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES).delete();
+        new File(SRC_PATH_TEST_JAVA_RESOURCES + FILE_DRONES).delete();
+        new File(SRC_PATH_TEST_JAVA_RESOURCES + EMPTY_FILE_DRONES).delete();
     }
 
     @Test
     public void testWriteToFileIsEmpty() throws IOException {
-        BufferedReader readerEmptyFile = new BufferedReader(new FileReader(SRC_PATH_TEST_RESOURCES + EMPTY_FILE_DRONES));
+        BufferedReader readerEmptyFile = new BufferedReader(new FileReader(SRC_PATH_TEST_JAVA_RESOURCES + EMPTY_FILE_DRONES));
         Assertions.assertNull(readerEmptyFile.readLine());
         readerEmptyFile.close();
     }
 
     @Test
     public void testWriteToFileForDroneWriter() throws IOException {
-        Path filePath = Paths.get(SRC_PATH_TEST_RESOURCES + FILE_DRONES);
-        Path expectedFilePath = Paths.get(SRC_PATH_TEST_RESOURCES + EXPECTED_FILE_DRONES);
+        Path filePath = Paths.get(SRC_PATH_TEST_JAVA_RESOURCES + FILE_DRONES);
+        Path expectedFilePath = Paths.get(SRC_PATH_TEST_JAVA_RESOURCES + EXPECTED_FILE_DRONES);
         Assertions.assertEquals(-1L, Files.mismatch(filePath, expectedFilePath));
     }
 }

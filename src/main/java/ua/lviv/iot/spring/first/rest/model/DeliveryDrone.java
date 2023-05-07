@@ -10,11 +10,11 @@ public final class DeliveryDrone extends AbstractDrone {
     private final double consumptionBattery;
     private double currentMaxFlyingDistance;
 
-    DeliveryDrone(final double currentBatteryLevel,
-                  final double batteryCapacity,
-                  final double consumptionBattery,
-                  final double currentSpeed,
-                  final double currentAltitude) {
+    public DeliveryDrone(final double currentBatteryLevel,
+                         final double batteryCapacity,
+                         final double consumptionBattery,
+                         final double currentSpeed,
+                         final double currentAltitude) {
         super(currentSpeed, currentAltitude);
         this.currentBatteryLevel = currentBatteryLevel;
         this.batteryCapacity = batteryCapacity;

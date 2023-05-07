@@ -10,6 +10,8 @@ import ua.lviv.iot.spring.first.rest.model.PetrolDrone;
 import ua.lviv.iot.spring.first.rest.service.PetrolDroneService;
 
 import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
@@ -37,9 +39,9 @@ public final class PetrolDronesController {
     }
 
     @GetMapping(path = "getall")
-    public Collection<PetrolDrone> getAllDrone() {
+    public List<PetrolDrone> getAllDrone() {
 
-        return droneService.getPetrolDroneMap().values();
+        return new LinkedList<>(droneService.getPetrolDroneMap().values());
 
     }
 
