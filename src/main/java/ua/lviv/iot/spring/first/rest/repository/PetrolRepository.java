@@ -1,5 +1,8 @@
 package ua.lviv.iot.spring.first.rest.repository;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestBody;
 import ua.lviv.iot.spring.first.rest.model.PetrolDrone;
 
@@ -9,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class PetrolRepository {
     private final Map<Integer, PetrolDrone> petrolDroneMap = new HashMap<>();
 
@@ -28,16 +33,16 @@ public class PetrolRepository {
         return new LinkedList<>(petrolDroneMap.values());
     }
 
-    public PetrolDrone getByIdFromRepository(final int id) {
+    public PetrolDrone getPetrolDroneByIdFromRepository(final int id) {
         return petrolDroneMap.get(id);
     }
 
-    public void setByIdFromRepository(final PetrolDrone petrolDrone,
-                        final int id) {
+    public void setPetrolDroneByIdFromRepository(final PetrolDrone petrolDrone,
+                                                 final int id) {
         petrolDroneMap.put(id, petrolDrone);
     }
 
-    public boolean existDroneWithIdInRepository(final int id) {
+    public boolean checkDroneWithIdExistsInRepository(final int id) {
         return petrolDroneMap.containsKey(id);
     }
 
@@ -46,7 +51,7 @@ public class PetrolRepository {
         petrolDroneMap.put(petrolDrone.getId(), petrolDrone);
     }
 
-    public void deleteDroneInRepository(final int id) {
+    public void deleteDroneByIdInRepository(final int id) {
         petrolDroneMap.remove(id);
     }
 

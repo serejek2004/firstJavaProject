@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 
 @Getter
-
 public final class PetrolDrone extends AbstractDrone {
     private final double fuelCapacity;
     private final double consumptionFuel;
