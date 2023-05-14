@@ -1,20 +1,25 @@
-package ua.lviv.iot.algo.part1.lab3;
+package ua.lviv.iot.spring.first.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 
 @Getter
-
 public final class PetrolDrone extends AbstractDrone {
     private final double fuelCapacity;
     private final double consumptionFuel;
     private double currentMaxFlyingDistance;
     private double currentFuelLevel;
+    private Integer id;
 
-    PetrolDrone(final double fuelCapacity,
-                final double currentFuelLevel,
-                final double consumptionFuel,
-                final double currentSpeed,
-                final double currentAltitude) {
+    public void setId(final int availableId) {
+        id = availableId;
+    }
+
+    public PetrolDrone(final double fuelCapacity,
+                       final double currentFuelLevel,
+                       final double consumptionFuel,
+                       final double currentSpeed,
+                       final double currentAltitude) {
         super(currentSpeed, currentAltitude);
         this.fuelCapacity = fuelCapacity;
         this.consumptionFuel = consumptionFuel;
@@ -55,6 +60,7 @@ public final class PetrolDrone extends AbstractDrone {
                         * formulaNumber;
     }
 
+    @JsonIgnore
     @Override
     public String getHeaders() {
         return super.getHeaders()

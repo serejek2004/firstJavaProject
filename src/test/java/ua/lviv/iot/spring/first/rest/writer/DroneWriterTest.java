@@ -1,9 +1,11 @@
-package ua.lviv.iot.algo.part1.lab3;
+package ua.lviv.iot.spring.first.rest.writer;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ua.lviv.iot.spring.first.rest.manager.DroneManager;
+import ua.lviv.iot.spring.first.rest.model.*;
 
 import java.io.*;
 import java.nio.file.Files;

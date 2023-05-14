@@ -1,4 +1,4 @@
-package ua.lviv.iot.algo.part1.lab3;
+package ua.lviv.iot.spring.first.rest.model;
 
 import lombok.Getter;
 
